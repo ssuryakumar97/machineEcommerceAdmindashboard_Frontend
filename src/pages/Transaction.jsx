@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { userRequest } from '../../requestMethods'
 import {format} from 'timeago.js'
-// import TimeAgo from 'javascript-time-ago'
-// import en from 'javascript-time-ago/locale/en'
-// import TimeAgo from 'react-timeago'
+import { userRequest } from '../requestMethods'
 
+const TransactionDiv = styled.div`
+    flex: 4;
+`
 
-// TimeAgo.addDefaultLocale(en)
-// const timeAgo = new TimeAgo('en-US')
 const WidgetLgDiv = styled.div`
-    flex:2;
     -webkit-box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.75);
@@ -71,8 +68,8 @@ const WidgetLgButton = styled.button`
   }
 `
 
-const WidgetLg = () => {
-  const [orders, setOrders] = useState([])
+const Transaction = () => {
+    const [orders, setOrders] = useState([])
 
     useEffect(() => {
         const getOrders = async() => {
@@ -87,14 +84,15 @@ const WidgetLg = () => {
         getOrders()
     },[])
 
-    const trans = orders.slice(0,5)
-    
-const Button = ({type}) => {
-  return <WidgetLgButton className={type}>{type}</WidgetLgButton>
-}
+    // const trans = orders.slice(0,5)
+
+    const Button = ({type}) => {
+        return <WidgetLgButton className={type}>{type}</WidgetLgButton>
+      }
 
   return (
-    <WidgetLgDiv>
+    <TransactionDiv>
+      <WidgetLgDiv>
       <WidgetLgTitle>Latest transactions</WidgetLgTitle>
       <WidgetLgTable>
         <thead>
@@ -106,7 +104,7 @@ const Button = ({type}) => {
         </WidgetLgTr>
         </thead>
         <tbody>
-        {trans.map((order) => (
+        {orders.map((order) => (
           <WidgetLgTr key={order._id}>
           <WidgetLgTdUser>
             <WidgetLgImg src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNVi9cbmMkUabLiF_3kfI94qngwPIM4gnrztEUv6Hopw&s' alt=''></WidgetLgImg>
@@ -122,7 +120,8 @@ const Button = ({type}) => {
         </tbody>
       </WidgetLgTable>
     </WidgetLgDiv>
+    </TransactionDiv>
   )
 }
 
-export default WidgetLg
+export default Transaction

@@ -33,6 +33,7 @@ const DeleteOutlineIconStyled = styled(DeleteOutlineIcon)`
 const Orders = () => {
 
     const [data, setData] = useState([])
+    const [deletedData, setDeletedData] = useState()
     
     useEffect(() => {
         const getOrders = async() => {
@@ -41,7 +42,13 @@ const Orders = () => {
           setData(res.data)
         }
         getOrders()
-      },[])
+      },[deletedData])
+
+      const handleDelete = async(val) => {
+        const deleteData = await userRequest.delete(`/orders/${val._id}`)
+        setDeletedData(deleteData.data)
+        toast.success("Data deleted successfully")
+      }
 
     const columns = [
         { field: "_id", headerName: "ID", width: 200 },
@@ -60,9 +67,45 @@ const Orders = () => {
           width: 120,
         },
         {
+          field: "paymentStatus",
+          headerName: "Payment Status",
+          width: 120,
+          renderCell: (params) => {
+
+            if(params.row.paymentStatus == "received"){
+
+              return (
+                <div style={{color: "green"}}>Received</div>
+              );
+            } else if(params.row.paymentStatus == "pending") {
+
+              return (
+                <div style={{color: "blue"}}>Pending</div>
+              );
+            } else {
+              return (
+                <div style={{color: "red"}}>Failed</div>
+              );
+            }
+          },
+        },
+        {
           field: "deliveryStatus",
           headerName: "Delivery Status",
           width: 120,
+          renderCell: (params) => {
+
+            if(params.row.deliveryStatus == "delivered"){
+
+              return (
+                <div style={{color: "green"}}>Delivered</div>
+              );
+            }  else {
+              return (
+                <div style={{color: "blue"}}>{params.row.deliveryStatus.charAt(0).toUpperCase() + params.row.deliveryStatus.slice(1)}</div>
+              );
+            }
+          },
         },
         {
           field: "action",
@@ -83,6 +126,7 @@ const Orders = () => {
 
   return (
     <OrderListDiv>
+      <ToastContainer autoClose={2000}/>
       {/* This is order page */}
       <DataGrid
             rows={data}

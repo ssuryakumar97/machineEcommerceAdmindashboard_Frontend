@@ -64,7 +64,8 @@ const FeaturedInfo = () => {
         const res = await userRequest.get("/orders/income");
         // console.log(res.data);
         setIncome(res.data);
-        setPercentage((res.data[1].total * 100) / res.data[0].total - 100);
+        setPercentage((res.data[0].total * 100) / res.data[1].total - 100);
+        // setPercentage((res.data[0].total - res.data[1].total) * 100 / res.data[1].total);
       } catch (err) {
         console.log(err);
       }
@@ -84,6 +85,7 @@ const FeaturedInfo = () => {
     getSales();
   }, []);
 
+  console.log(income)
   console.log(sales[1]?.products.length);
   console.log(totalProducts);
 
@@ -92,7 +94,7 @@ const FeaturedInfo = () => {
       <FeaturedItem>
         <FeaturedTitle>Revenue</FeaturedTitle>
         <FeaturedMoneyContainer>
-          <FeaturedMoney>₹{income[1]?.total}</FeaturedMoney>
+          <FeaturedMoney>₹{income[0]?.total}</FeaturedMoney>
           <FeaturedMoneyRate>
             {Math.floor(percentage)}%{" "}
             {percentage < 0 ? <StyledArrowDownward /> : <StyledArrowUpward />}{" "}

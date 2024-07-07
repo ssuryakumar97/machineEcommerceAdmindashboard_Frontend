@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Timeline, LineStyle, TrendingUp, PersonOutline, Inventory, AssessmentOutlined, CurrencyRupeeOutlined, Mail, Feedback, ChatBubble, Work, Report, ShoppingCart } from "@mui/icons-material";
-import {Link, NavLink} from "react-router-dom"
+import { LineStyle, TrendingUp, PersonOutline, Inventory, AssessmentOutlined, CurrencyRupeeOutlined, Mail, Feedback, ChatBubble, Work, Report, ShoppingCart } from "@mui/icons-material";
+import { NavLink} from "react-router-dom"
 import "../../App.css"
 
 const SidebarDiv = styled.div`
@@ -16,19 +16,21 @@ const SidebarWrapper = styled.div`
   color: #555;
 `;
 const SidebarMenu = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 `;
 const SidebarTitle = styled.h3`
-  font-size: 13px;
+  font-size: 16px;
+  margin-bottom: 10px;
   color: lightgray;
 `;
 const SidebarList = styled.ul`
   list-style: none;
   padding: 5px;
-  font-size: 11px;
+  font-size: 14px;
 `;
 const SidebarListItem = styled.li`
   padding: 5px;
+  margin-bottom: 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -94,50 +96,13 @@ const Sidebar = () => {
               </SidebarListItem>
             )}
             </NavLink>
-            <SidebarListItem>
-              <CurrencyRupeeOutlined style={{ marginRight: "5px", fontSize: "20px" }} />
-              Transactions
-            </SidebarListItem>
-            <SidebarListItem>
-              <AssessmentOutlined style={{ marginRight: "5px", fontSize: "20px" }} />
-              Reports
-            </SidebarListItem>
-          </SidebarList>
-        </SidebarMenu>
-        <SidebarMenu>
-          <SidebarTitle>Notifications</SidebarTitle>
-
-          <SidebarList>
-            <SidebarListItem>
-              <Mail style={{ marginRight: "5px", fontSize: "20px" }} />
-              Mail
-            </SidebarListItem>
-            <SidebarListItem >
-              <Feedback style={{ marginRight: "5px", fontSize: "20px" }} />
-              Feedback
-            </SidebarListItem>
-            <SidebarListItem>
-              <ChatBubble style={{ marginRight: "5px", fontSize: "20px" }} />
-              Messages
-            </SidebarListItem>
-          </SidebarList>
-        </SidebarMenu>
-        <SidebarMenu>
-          <SidebarTitle>Staff</SidebarTitle>
-
-          <SidebarList>
-            <SidebarListItem>
-              <Work style={{ marginRight: "5px", fontSize: "20px" }} />
-              Manage
-            </SidebarListItem>
-            <SidebarListItem>
-              <Timeline style={{ marginRight: "5px", fontSize: "20px" }} />
-              Analytics
-            </SidebarListItem>
-            <SidebarListItem>
-              <Report style={{ marginRight: "5px", fontSize: "20px" }} />
-              Reports
-            </SidebarListItem>
+            <NavLink to="/transaction" className="link">{({isActive})=>(
+                <SidebarListItem className={isActive?"active":""} >
+                <CurrencyRupeeOutlined style={{ marginRight: "5px", fontSize: "20px" }} />
+                Transactions
+              </SidebarListItem>
+            )}
+            </NavLink>
           </SidebarList>
         </SidebarMenu>
       </SidebarWrapper>

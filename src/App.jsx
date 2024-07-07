@@ -15,6 +15,8 @@ import { useSelector } from "react-redux";
 import Sales from "./pages/Sales";
 import Orders from "./pages/Orders";
 import Order from "./pages/Order";
+import Transaction from "./pages/Transaction";
+import Register from "./pages/Register";
 
 const MainDiv = styled.div`
   display: flex;
@@ -43,6 +45,7 @@ return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register/>} />
         <Route path="/" element={<PrivateRoute isAdmin={admin}/>}>
           <Route path="/" element={<Home/>}/>
           <Route path="/users" element={<UserList/>}/>
@@ -54,6 +57,7 @@ return (
           <Route path="/sales" element={<Sales/>}/>
           <Route path="/orders" element={<Orders/>}/>
           <Route path="/order/:id" element={<Order/>}/>
+          <Route path="/transaction" element={<Transaction/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

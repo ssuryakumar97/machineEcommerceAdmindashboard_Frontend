@@ -196,7 +196,7 @@ const Product = () => {
     const handleClick = async(e) => {
         e.preventDefault()
         setDisableButton(true)
-        // const deleteImage = await userRequest.delete(`image/delete/${productData?.imageId}`)
+        const deleteImage = await userRequest.delete(`image/delete/${productData?.imageId}`)
         const form = new FormData()
         form.append("image", image)
         const result = await userRequest.post("image/uploadImage", form, {
@@ -228,7 +228,7 @@ const Product = () => {
         <ProductTopRight>
             <ProductInfoTop>
                 <ProductInfoImg src={`${BASE_URL}/image/download/${productData?.img}`}/>
-                <ProductName>{productData?.title.charAt(0).toUpperCase() + productData?.title.slice(1)}</ProductName>
+                <ProductName>{productData?.title.charAt(0).toUpperCase()}{productData?.title.slice(1)}</ProductName>
             </ProductInfoTop>
             <ProductInfoBottom>
                 <ProductInfoItem>
