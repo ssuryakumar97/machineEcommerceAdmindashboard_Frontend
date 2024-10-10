@@ -96,6 +96,13 @@ const Sidebar = () => {
               </SidebarListItem>
             )}
             </NavLink>
+            <NavLink to="/newProduct" className="link">{({isActive})=>(
+                <SidebarListItem className={isActive?"active":""} >
+                <CurrencyRupeeOutlined style={{ marginRight: "5px", fontSize: "20px" }} />
+                Create Product
+              </SidebarListItem>
+            )}
+            </NavLink>
             <NavLink to="/transaction" className="link">{({isActive})=>(
                 <SidebarListItem className={isActive?"active":""} >
                 <CurrencyRupeeOutlined style={{ marginRight: "5px", fontSize: "20px" }} />
