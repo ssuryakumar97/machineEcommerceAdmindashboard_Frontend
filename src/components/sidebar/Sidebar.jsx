@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { LineStyle, TrendingUp, PersonOutline, Inventory, AssessmentOutlined, CurrencyRupeeOutlined, Mail, Feedback, ChatBubble, Work, Report, ShoppingCart } from "@mui/icons-material";
+import { LineStyle, TrendingUp, PersonOutline, Inventory, AssessmentOutlined, CurrencyRupeeOutlined, Mail, Feedback, ChatBubble, Work, Report, ShoppingCart, AddBox } from "@mui/icons-material";
 import { NavLink} from "react-router-dom"
 import "../../App.css"
 
@@ -98,7 +98,7 @@ const Sidebar = () => {
             </NavLink>
             <NavLink to="/newProduct" className="link">{({isActive})=>(
                 <SidebarListItem className={isActive?"active":""} >
-                <CurrencyRupeeOutlined style={{ marginRight: "5px", fontSize: "20px" }} />
+                <AddBox style={{ marginRight: "5px", fontSize: "20px" }} />
                 Create Product
               </SidebarListItem>
             )}
