@@ -1,8 +1,10 @@
-# React + Vite
+Note:
+When you register through register page you can't logged in directly. To login to this admin dashboard you need admin access. The below given user credentials have admin access
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+USER CREDENTIALS:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ADMIN:
+
+USERNAME: surya@gmail.com PASSWORD: 12345678
+USERNAME: kumar123   PASSWORD: 12345678
